@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+
+<webappext:WebAppExtension
+   xmi:version="2.0"
+   xmlns:xmi="http://www.omg.org/XMI"
+   xmlns:webappext="webappext.xmi"
+   xmlns:webapplication="webapplication.xmi"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmi:id="WebApp_ID_Ext"
+   reloadingEnabled="<XDtConfig:configParameterValue paramName="reloadingEnabled"/>"
+  <XDtConfig:ifHasConfigParam paramName="reloadInterval">
+   reloadInterval="<XDtConfig:configParameterValue paramName="reloadInterval"/>"
+  </XDtConfig:ifHasConfigParam>
+  <XDtConfig:ifHasConfigParam paramName="defaultErrorPage">
+   defaultErrorPage="<XDtConfig:configParameterValue paramName="defaultErrorPage"/>"
+  </XDtConfig:ifHasConfigParam>
+  <XDtConfig:ifHasConfigParam paramName="additionalClassPath">
+   additionalClassPath="<XDtConfig:configParameterValue paramName="additionalClassPath"/>"
+  </XDtConfig:ifHasConfigParam>
+   fileServingEnabled="<XDtConfig:configParameterValue paramName="fileServingEnabled"/>"
+   directoryBrowsingEnabled="<XDtConfig:configParameterValue paramName="directoryBrowsingEnabled"/>"
+   serveServletsByClassnameEnabled="<XDtConfig:configParameterValue paramName="serveServletsByClassnameEnabled"/>">
+
+  <XDtConfig:ifConfigParamEquals paramName="reloadInterval" value="">
+   <reloadInterval xsi:nil="true"/>
+  </XDtConfig:ifConfigParamEquals>
+  <XDtConfig:ifConfigParamEquals paramName="defaultErrorPage" value="">
+   <defaultErrorPage xsi:nil="true"/>
+  </XDtConfig:ifConfigParamEquals>
+  <XDtConfig:ifConfigParamEquals paramName="additionalClassPath" value="">
+   <additionalClassPath xsi:nil="true"/>
+  </XDtConfig:ifConfigParamEquals>
+
+  <webApp href="WEB-INF/web.xml#<XDtId:prefixedId prefix='web-app' wrapInIdEquals='false'/>"/>
+
+</webappext:WebAppExtension>

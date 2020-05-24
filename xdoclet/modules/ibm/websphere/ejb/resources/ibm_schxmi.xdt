@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDBSchema:RDBSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RDBSchema="RDBSchema.xmi" name="sql">
+	<database href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>.dbxmi#RDBDatabase_TODO"/>
+   <XDtEjbEntity:forAllEntityBeans>
+   <XDtEjb:ifIsAConcreteEJBean>
+   <XDtEjbCmp:ifEntityIsCmp>
+	<tables xmi:type="RDBSchema:RDBTable" href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_sql_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name' paramNum='0'/>.tblxmi#RDBTable_TODO"/>
+   </XDtEjbCmp:ifEntityIsCmp>
+   </XDtEjb:ifIsAConcreteEJBean>
+  </XDtEjbEntity:forAllEntityBeans>
+  <XDtEjbRel:forAllRelationships>
+  	<XDtEjbRel:ifIsMany2Many>
+	<tables xmi:type="RDBSchema:RDBTable" href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_sql_<XDtEjbRel:leftRoleName/>_<XDtEjbRel:rightRoleName/>.tblxmi#RDBTable_TODO"/>
+  	</XDtEjbRel:ifIsMany2Many>
+  </XDtEjbRel:forAllRelationships>
+</RDBSchema:RDBSchema>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDBSchema:RDBTable xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RDBSchema="RDBSchema.xmi" 
+		xmi:id="RDBTable_<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+		name="<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>" 
+		primaryKey="SQLReference_PrimaryKey">
+	<database href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>.dbxmi#RDBDatabase_TODO"/>
+	<schema href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_sql.schxmi#RDBSchema_TODO"/>
+
+<XDtMethod:forAllMethodTags tagName="websphere.relation">
+XXX
+</XDtMethod:forAllMethodTags>
+
+	<XDtMethod:forAllMethodTags tagName="websphere:relation-column">
+	<columns xmi:type="RDBSchema:RDBColumn" name="<XDtMethod:methodTagValue tagName='websphere:relation-column' paramName='column-name'/>" xmi:id="RDBColumn_<XDtMethod:methodTagValue tagName='websphere:relation-column' paramName='column-name'/>" 
+		<XDtMethod:ifHasMethodTag tagName='websphere:relation-column' paramName='pk'>
+		allowNull="false">
+		</XDtMethod:ifHasMethodTag>
+		<XDtMethod:ifDoesntHaveMethodTag tagName='websphere.relation-column' paramName='pk'>
+		allowNull="true">
+		</XDtMethod:ifDoesntHaveMethodTag>
+		
+		<type xmi:type="RDBSchema:<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="websphere:relation-column" paramName="jdbc-type"/>' />" 
+		     xmi:id="<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="websphere:relation-column" paramName="jdbc-type"/>'/>_TODO"
+		     <XDtWASEjb:ifCharacterType>
+		     characterSet="800" length="<XDtWASEjb:getColumnLength/>"
+		     </XDtWASEjb:ifCharacterType>
+		     >
+			<originatingType xmi:type="RDBSchema:<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="websphere:relation-column" paramName="jdbc-type"/>' />" 
+				href="<XDtWASEjb:getShortDBName dbType='<XDtConfig:configParameterValue paramName="Db"/>'/>_Primitives.xmi#<XDtWASEjb:getSQLType dbType='<XDtConfig:configParameterValue paramName="Db"/>' sqlType='<XDtMethod:methodTagValue tagName="websphere:relation-column" paramName="sql-type"/>' />"
+			/>
+		</type>
+	</columns>
+	</XDtMethod:forAllMethodTags>
+	
+	<XDtComment:comment>
+		Now, pick up all the named groups. First, the primary key.
+	</XDtComment:comment>
+
+	<XDtMethod:forAllMethodTags tagName="websphere:relation">
+	 <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="SQLReference_<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+	 	name="<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+	 	constraint="SQLConstraint_<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+	 	members="<XDtWASEjb:getRelationshipKeyColumns/>"
+	 	>
+	 </namedGroup>
+	</XDtMethod:forAllMethodTags>
+
+	<XDtComment:comment>
+		Now, do all the foreign keys
+	</XDtComment:comment>
+
+
+	<XDtMethod:forAllMethodTags tagName="websphere:relation">
+	 <XDtWASEjb:forAllForeignTables>
+	 <namedGroup xmi:type="RDBSchema:RDBReferenceByKey" xmi:id="RDBReferenceByKey_<XDtWASEjb:tableName/>"
+	 	name="<XDtWASEjb:tableName/>" constraint="SQLConstraint_<XDtWASEjb:tableName/>" members="<XDtWASEjb:getCurrentTableForeignKeyColumns/>">
+	 	<target href="META-INF/backends/<XDtConfig:configParameterValue paramName="Db"/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_<XDtWASEjb:tableName/>.tblxmi#SQLReference_TODO"/>
+	 </namedGroup>
+	 </XDtWASEjb:forAllForeignTables>
+	</XDtMethod:forAllMethodTags>
+
+	<XDtComment:comment>
+		Pick up all constraint elements
+	</XDtComment:comment>
+
+	<XDtMethod:forAllMethodTags tagName="websphere:relation">
+	 <constraints xmi:id="SQLConstraint_<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+	 	name="<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>"
+		type="PRIMARYKEY" primaryKey="SQLReference_<XDtMethod:methodTagValue tagName='websphere:relation' paramName='table-name'/>">
+	 </constraints>
+	</XDtMethod:forAllMethodTags>
+
+	<XDtMethod:forAllMethodTags tagName="websphere:relation">
+	 <XDtWASEjb:forAllForeignTables>
+	 <constraints xmi:id="SQLConstraint_<XDtWASEjb:tableName/>"
+	 	name="<XDtWASEjb:tableName/>"
+		type="FOREIGNKEY" referenceByKey="RDBReferenceByKey_<XDtWASEjb:tableName/>">
+	 </constraints>
+	 </XDtWASEjb:forAllForeignTables>
+	</XDtMethod:forAllMethodTags>
+
+</RDBSchema:RDBTable>

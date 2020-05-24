@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="<XDtConfig:configParameterValue paramName='Xmlencoding'/>"?>
+<!DOCTYPE ejb-jar PUBLIC "<XDtXml:publicId/>" "<XDtXml:systemId/>">
+
+<ejb-jar id="ejb-jar_ID">
+
+  <XDtConfig:ifConfigParamNotEquals paramName="Description" value="">
+   <description><![CDATA[<XDtConfig:configParameterValue paramName="Description"/>]]></description>
+  </XDtConfig:ifConfigParamNotEquals>
+  <XDtConfig:ifConfigParamNotEquals paramName="Displayname" value="">
+   <display-name><XDtConfig:configParameterValue paramName="Displayname"/></display-name>
+  </XDtConfig:ifConfigParamNotEquals>
+  <XDtConfig:ifConfigParamNotEquals paramName="Smallicon" value="">
+   <small-icon><XDtConfig:configParameterValue paramName="Smallicon"/></small-icon>
+  </XDtConfig:ifConfigParamNotEquals>
+  <XDtConfig:ifConfigParamNotEquals paramName="Largeicon" value="">
+   <large-icon><XDtConfig:configParameterValue paramName="Largeicon"/></large-icon>
+  </XDtConfig:ifConfigParamNotEquals>
+
+   <enterprise-beans>
+
+   <!-- Session Beans -->
+   <XDtEjbSession:forAllSessionBeans>
+    <XDtEjb:ifIsAConcreteEJBean>
+      <session id="<XDtEjb:ejbName/>">
+        <XDtMerge:merge file="xdoclet/modules/ibm/websphere/ejb/resources/ejb-body.xdt">
+        </XDtMerge:merge>
+      </session>
+
+    </XDtEjb:ifIsAConcreteEJBean>
+   </XDtEjbSession:forAllSessionBeans>
+   <XDtMerge:merge file="session-beans.xml">
+     <!--
+       To add session beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called session-beans.xml that contains
+       the <session></session> markup for those beans.
+     -->
+   </XDtMerge:merge>
+
+      <!-- Entity Beans -->
+   <XDtEjbEntity:forAllEntityBeans>
+    <XDtEjb:ifIsAConcreteEJBean>
+     <XDtEjbCmp:ifEntityIsCmp>
+      <entity id="<XDtEjb:ejbName/>">
+     </XDtEjbCmp:ifEntityIsCmp>
+     <XDtEjbBmp:ifEntityIsBmp>
+      <entity id="<XDtEjb:ejbName/>/>
+     </XDtEjbBmp:ifEntityIsBmp>
+        <XDtMerge:merge file="xdoclet/modules/ibm/websphere/ejb/resources/ejb-body.xdt">
+        </XDtMerge:merge>
+      </entity>
+
+    </XDtEjb:ifIsAConcreteEJBean>
+   </XDtEjbEntity:forAllEntityBeans>
+   <XDtMerge:merge file="entity-beans.xml">
+     <!--
+       To add entity beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called entity-beans.xml that contains
+       the <entity></entity> markup for those beans.
+     -->
+   </XDtMerge:merge>
+
+  <XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+      <!-- Message Driven Beans -->
+   <XDtEjbMdb:forAllMDBeans>
+    <XDtEjb:ifIsAConcreteEJBean>
+      <message-driven <XDtId:prefixedId prefix="MessageDriven"/>>
+        <XDtMerge:merge file="xdoclet/modules/ejb/dd/resources/ejb-body.xdt">
+        </XDtMerge:merge>
+      </message-driven>
+
+    </XDtEjb:ifIsAConcreteEJBean>
+   </XDtEjbMdb:forAllMDBeans>
+   <XDtMerge:merge file="message-driven-beans.xml">
+     <!--
+       To add message driven beans that you have deployment descriptor info for, add
+       a file to your XDoclet merge directory called message-driven-beans.xml that contains
+       the <message-driven></message-driven> markup for those beans.
+     -->
+   </XDtMerge:merge>
+
+  </XDtConfig:ifConfigParamGreaterOrEquals>
+
+   </enterprise-beans>
+
+  <XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+   <!-- Relationships -->
+   <XDtMerge:merge file="xdoclet/modules/ibm/websphere/ejb/resources/relationships.xdt">
+   </XDtMerge:merge>
+  </XDtConfig:ifConfigParamGreaterOrEquals>
+
+   <!-- Assembly Descriptor -->
+   <XDtMerge:merge file="xdoclet/modules/ejb/dd/resources/asm-descriptor.xdt">
+   </XDtMerge:merge>
+
+  <XDtConfig:ifConfigParamNotEquals paramName="Clientjar" value="false">
+   <ejb-client-jar><XDtConfig:configParameterValue paramName="Clientjar"/></ejb-client-jar>
+  </XDtConfig:ifConfigParamNotEquals>
+
+</ejb-jar>

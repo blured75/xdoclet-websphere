@@ -1,0 +1,54 @@
+  <XDtEjbRel:ifHasRelationships>
+   <relationships <XDtId:prefixedId prefix="Relationships"/>>
+    <XDtEjbRel:forAllRelationships>
+      <ejb-relation <XDtId:prefixedId prefix="EJBRelation"/>>
+         <ejb-relation-name><XDtEjbRel:relationName/></ejb-relation-name>
+
+         <!-- <ejb-relationship-role id="EJBRelationshipRole_<XDtEjbRel:relationName/>"> -->
+         <ejb-relationship-role id="<XDtId:prefixedId prefix='EJBRelationshipRole' wrapInIdEquals='false'/>">
+           <XDtEjbRel:ifHasLeftRoleName>
+            <ejb-relationship-role-name><XDtEjbRel:leftRoleName/></ejb-relationship-role-name>
+           </XDtEjbRel:ifHasLeftRoleName>
+            <multiplicity><XDtEjbRel:rightMultiplicity/></multiplicity>
+           <XDtEjbRel:ifLeftCascadeDelete>
+            <cascade-delete/>
+           </XDtEjbRel:ifLeftCascadeDelete>
+            <relationship-role-source <XDtId:prefixedId prefix="RoleSource"/>>
+               <ejb-name><XDtEjbRel:leftEJBName/></ejb-name>
+            </relationship-role-source>
+           <XDtEjbRel:ifLeftNavigable>
+            <cmr-field <XDtId:prefixedId prefix="CMRField"/>>
+               <cmr-field-name><XDtEjbRel:leftFieldName/></cmr-field-name>
+              <XDtEjbRel:ifIsLeftMany>
+               <cmr-field-type><XDtEjbRel:leftFieldType/></cmr-field-type>
+              </XDtEjbRel:ifIsLeftMany>
+            </cmr-field>
+           </XDtEjbRel:ifLeftNavigable>
+         </ejb-relationship-role>
+
+         <!-- <ejb-relationship-role id="EJBRelationshipRole_<XDtEjbRel:relationName/>"> -->
+         <ejb-relationship-role id="<XDtId:prefixedId prefix='EJBRelationshipRole' wrapInIdEquals='false'/>">
+           <XDtEjbRel:ifHasRightRoleName>
+            <ejb-relationship-role-name><XDtEjbRel:rightRoleName/></ejb-relationship-role-name>
+           </XDtEjbRel:ifHasRightRoleName>
+            <multiplicity><XDtEjbRel:leftMultiplicity/></multiplicity>
+           <XDtEjbRel:ifRightCascadeDelete>
+            <cascade-delete/>
+           </XDtEjbRel:ifRightCascadeDelete>
+            <relationship-role-source <XDtId:prefixedId prefix="RoleSource"/>>
+               <ejb-name><XDtEjbRel:rightEJBName/></ejb-name>
+            </relationship-role-source>
+           <XDtEjbRel:ifRightNavigable>
+            <cmr-field <XDtId:prefixedId prefix="CMRField"/>>
+               <cmr-field-name><XDtEjbRel:rightFieldName/></cmr-field-name>
+              <XDtEjbRel:ifIsRightMany>
+               <cmr-field-type><XDtEjbRel:rightFieldType/></cmr-field-type>
+              </XDtEjbRel:ifIsRightMany>
+            </cmr-field>
+           </XDtEjbRel:ifRightNavigable>
+         </ejb-relationship-role>
+
+      </ejb-relation>
+      </XDtEjbRel:forAllRelationships>
+   </relationships>
+  </XDtEjbRel:ifHasRelationships>

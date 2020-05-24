@@ -1,0 +1,43 @@
+<webappbnd:WebAppBinding xmi:version="2.0"
+   xmlns:xmi="http://www.omg.org/XMI"
+   xmlns:webappbnd="webappbnd.xmi"
+    xmlns:webapplication="webapplication.xmi"
+    xmlns:commonbnd="commonbnd.xmi"
+    xmlns:common="common.xmi"
+    xmi:id="WebApp_ID_Bnd"
+   <XDtConfig:ifHasConfigParam paramName="virtualHostName">
+   virtualHostName="<XDtConfig:configParameterValue paramName='virtualHostName'/>"
+   </XDtConfig:ifHasConfigParam>>
+   <XDtConfig:ifConfigParamEquals paramName="virtualHostName" value="">
+   <virtualHostName xsi:nil="true"/>
+   </XDtConfig:ifConfigParamEquals>
+
+   <webapp href="WEB-INF/web.xml#<XDtId:prefixedId prefix='web-app' wrapInIdEquals='false'/>"/>
+
+  <XDtEjbRef:forAllEjbRefs>
+   <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+      <bindingEjbRef href="WEB-INF/web.xml#<XDtId:prefixedId prefix='EJBRef' wrapInIdEquals='false'/>"/>
+   </ejbRefBindings>
+  </XDtEjbRef:forAllEjbRefs>
+
+  <XDtClass:forAllClassTags tagName="ejb:ejb-external-ref">
+   <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+      <bindingEjbRef href="WEB-INF/web.xml#<XDtId:prefixedId prefix='EJBRef' wrapInIdEquals='false'/>"/>
+   </ejbRefBindings>
+  </XDtClass:forAllClassTags>
+
+  <XDtClass:forAllClassTags tagName="web:resource-ref">
+  <XDtClass:ifHasClassTag tagName="web:resource-ref" paramName="jndi-name">
+   <resRefBindings xmi:<XDtId:prefixedId prefix="ResRefBnd"/> jndiName="<XDtClass:classTagValue tagName='web:resource-ref' paramName='jndi-name'/>">
+     <XDtClass:ifHasClassTag tagName="web:resource-ref" paramName="res-auth">
+      <defaultAuth xmi:type="commonbnd:BasicAuthData" xmi:<XDtId:prefixedId prefix="BasicAuthData"/>>
+         <userId xsi:nil="true"/>
+         <password xdi:nul="true"/>
+      </defaultAuth>
+     </XDtClass:ifHasClassTag>
+      <bindingResourceRef href="WEB-INF/web.xml#<XDtId:prefixedId prefix='ResRef' wrapInIdEquals='false'/>"/>
+   </resRefBindings>
+  </XDtClass:ifHasClassTag>
+  </XDtClass:forAllClassTags>
+
+</webappbnd:WebAppBinding>

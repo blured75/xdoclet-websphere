@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xdoclet PUBLIC "-//XDoclet Team//DTD XDoclet Tags 1.1//EN" "http://xdoclet.sourceforge.net/dtds/xtags_1_1.dtd">
+
+<xdoclet>
+  <!-- XXXXX tags -->
+  <namespace>
+    <name>WebSphere</name>
+    <usage-description>IBM's Websphere</usage-description>
+    <condition-description>EJBs</condition-description>
+    <condition type="and">
+      <condition type="or">
+        <condition type="class"/>
+        <condition type="method"/>
+      </condition>
+      <condition type="or">
+        <condition type="type">
+          <condition-parameter>javax.ejb.SessionBean</condition-parameter>
+        </condition>
+        <condition type="type">
+          <condition-parameter>javax.ejb.EntityBean</condition-parameter>
+        </condition>
+        <condition type="type">
+          <condition-parameter>javax.ejb.MessageDrivenBean</condition-parameter>
+        </condition>
+      </condition>
+    </condition>
+    <tags>
+	  <tag>
+	  	<level>class</level>
+		<name>websphere.bean</name>
+		<usage-description>defined bean parameters for websphere servers</usage-description>
+		<unique>true</unique>
+        <condition-description>Entity and session beans</condition-description>
+        <condition type="or">
+          <condition type="type">
+            <condition-parameter>javax.ejb.EntityBean</condition-parameter>
+          </condition>
+          <condition type="type">
+            <condition-parameter>javax.ejb.SessionBean</condition-parameter>
+          </condition>
+        </condition>
+        <parameter type="text">
+          <name>timeout</name>
+          <usage-description></usage-description>
+          <mandatory>false</mandatory>
+          <default/>
+          <condition type="type">
+            <condition-parameter>javax.ejb.SessionBean</condition-parameter>
+          </condition>		  
+        </parameter>
+	  </tag>
+      <tag>
+        <level>class</level>
+        <name>websphere.finder-query</name>
+        <usage-description/>
+        <unique>true</unique>
+        <condition-description>EJBs</condition-description>
+        <condition type="or">
+          <condition type="type">
+            <condition-parameter>javax.ejb.EntityBean</condition-parameter>
+          </condition>
+        </condition>
+        <parameter type="text">
+          <name>name</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+        <parameter type="text">
+          <name>parms</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+        <parameter type="text">
+          <name>where-clause</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+        <parameter type="text">
+          <name>home</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+      </tag>
+      <tag>
+        <level>class</level>
+        <name>websphere.mapping</name>
+        <usage-description/>
+        <unique>true</unique>
+        <condition-description>EJBs</condition-description>
+        <condition type="or">
+          <condition type="type">
+            <condition-parameter>javax.ejb.EntityBean</condition-parameter>
+          </condition>
+        </condition>
+        <parameter type="text">
+          <name>table-name</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+      </tag>
+      <tag>
+        <level>class</level>
+        <name>websphere.mapping-constraint</name>
+        <usage-description/>
+        <unique>true</unique>
+        <condition-description>EJBs</condition-description>
+        <condition type="or">
+          <condition type="type">
+            <condition-parameter>javax.ejb.SessionBean</condition-parameter>
+          </condition>
+          <condition type="type">
+            <condition-parameter>javax.ejb.EntityBean</condition-parameter>
+          </condition>
+          <condition type="type">
+            <condition-parameter>javax.ejb.MessageDrivenBean</condition-parameter>
+          </condition>
+        </condition>
+        <parameter type="text">
+          <name>constraint-name</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+        <parameter type="text">
+          <name>constraint-type</name>
+          <usage-description/>
+          <mandatory>true</mandatory>
+          <default/>
+        </parameter>
+      </tag>
+    </tags>
+  </namespace>
+</xdoclet>
+

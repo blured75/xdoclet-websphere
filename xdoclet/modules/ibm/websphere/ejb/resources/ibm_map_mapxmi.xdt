@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ejbrdbmapping:EjbRdbDocumentRoot xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RDBSchema="RDBSchema.xmi" 
+	xmlns:ejb="ejb.xmi" xmlns:ejbrdbmapping="ejbrdbmapping.xmi" xmlns:Mapping="Mapping.xmi" xmi:id="EjbRdbDocumentRoot_root" topToBottom="true">
+  <helper xmi:type="ejbrdbmapping:RdbSchemaProperties" xmi:id="RdbSchemaProperties_props" 
+  	primitivesDocument="<XDtWASEjb:getShortDBName dbType='<XDtConfig:configParameterValue paramName="Db"/>'/>"/>
+
+  	<XDtClass:forAllClasses type="javax.ejb.EntityBean">
+     <XDtEjb:ifIsAConcreteEJBean>
+        <XDtEjbCmp:ifEntityIsCmp>
+		<nested xmi:id="RDBEjbMapper_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>" xmi:type="ejbrdbmapping:RDBEjbMapper">
+			<helper xmi:type="ejbrdbmapping:PrimaryTableStrategy" xmi:id="PrimaryTableStrategy_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>">
+				<table href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>.tblxmi#<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>"/>
+			</helper>
+			<XDtEjbCmp:forAllCmpFields>
+			<nested xmi:type="ejbrdbmapping:RDBEjbFieldMapper" xmi:id="RDBEjbFieldMapper_<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>">
+				<inputs xmi:type="ejb:CMPAttribute" href="META-INF/ejb-jar.xml#CMPAttribute_<XDtClass:classTagValue tagName="ejb:bean" paramName="name"/>#<XDtMethod:propertyName/>"/>
+				<!-- <inputs xmi:type="ejb:CMPAttribute" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='CMPAttribute' wrapInIdEquals='false'/>"/> -->
+				<outputs xmi:type="RDBSchema:RDBColumn" href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>.tblxmi#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>"/>
+				<typeMapping xmi:type="ejbrdbmapping:RDBEjbFieldMapper" 
+					href="Javato<XDtWASEjb:getShortDBName dbType='<XDtConfig:configParameterValue paramName="Db"/>'/>TypeMaps.xmi#<XDtWASEjb:getConversionHRef/>"
+					/>
+			</nested>
+			</XDtEjbCmp:forAllCmpFields>
+			
+			<inputs xmi:type="ejb:ContainerManagedEntity" href="META-INF/ejb-jar.xml#<XDtClass:classTagValue tagName='ejb:bean' paramName='name'/>"/>
+			<outputs xmi:type="RDBSchema:RDBTable"
+				href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>.tblxmi#<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>"/>
+
+			<XDtWASEjb:forAllRelationships>
+			<XDtEjbRel:ifIsMany2Many>
+			<nested xmi:id="<XDtEjbRel:relationName/>" xmi:type="ejbrdbmapping:RDBEjbFieldMapper">
+				<helper xmi:type="ejbrdbmapping:ManyToManyComposer" xmi:id="ManyToManyComposer_<XDtEjbRel:leftRoleName/>"/>
+				<XDtEjbRel:ifHasRightRoleName>
+				<!-- <inputs xmi:type="ejb:EJBRelationshipRole" href="META-INF/ejb-jar.xml#EJBRelationshipRole_<XDtEjbRel:rightRoleName/>" right="true"/> -->
+				<inputs xmi:type="ejb:EJBRelationshipRole" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBRelationshipRole' wrapInIdEquals='false'/>" right="true"/>
+				</XDtEjbRel:ifHasRightRoleName>
+				<outputs xmi:type="RDBSchema:RDBReferenceByKey"
+					href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_<XDtWASEjb:getTableNameForRelationship />.tblxmi#RDBReferenceByKey_<XDtWASEjb:tableName/>"/>
+			</nested>
+			</XDtEjbRel:ifIsMany2Many>
+			
+			<XDtEjbRel:ifNotIsMany2Many>
+			<XDtWASEjb:ifMyRelationship>
+			
+			<nested xmi:id="<XDtEjbRel:relationName/>" xmi:type="ejbrdbmapping:RDBEjbFieldMapper">
+				<helper xmi:type="ejbrdbmapping:ForwardFlattenedFKComposer" xmi:id="ForwardFlattenedFKComposer_<XDtEjbRel:leftRoleName/>"/>
+
+				<XDtEjbRel:ifHasLeftRoleName>
+				<!-- <inputs xmi:type="ejb:EJBRelationshipRole" href="META-INF/ejb-jar.xml#EJBRelationshipRole_<XDtEjbRel:leftRoleName/>" left="true"/> -->
+				<inputs xmi:type="ejb:EJBRelationshipRole" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBRelationshipRole' wrapInIdEquals='false'/>" left="true"/>
+				</XDtEjbRel:ifHasLeftRoleName>
+				
+				<outputs xmi:type="RDBSchema:RDBReferenceByKey"
+					href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>_sql_<XDtWASEjb:getTableNameForRelationship />.tblxmi#RDBReferenceByKey_TODO"/>
+			</nested>
+			</XDtWASEjb:ifMyRelationship>
+			</XDtEjbRel:ifNotIsMany2Many>
+
+			</XDtWASEjb:forAllRelationships>
+
+
+		</nested>
+        </XDtEjbCmp:ifEntityIsCmp>
+     </XDtEjb:ifIsAConcreteEJBean>
+    </XDtClass:forAllClasses>
+    <inputs xmi:type="ejb:EJBJar" href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+    <outputs xmi:type="RDBSchema:RDBDatabase" href="META-INF/backends/INFORMIX_V73_1/bbcpudb.dbxmi#RDBDatabase_<XDtConfig:configParameterValue paramName='Schema'/>"/>
+    <typeMapping xmi:type="Mapping:MappingRoot" href="JavatoINFORMIX_V73TypeMaps.xmi#Java_to_INFORMIX_V73_TypeMaps" />
+    <deploymentOptions xmi:id="WASDeploymentOptions_DeploymentOptions"/>
+
+</ejbrdbmapping:EjbRdbDocumentRoot>

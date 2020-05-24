@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+<!DOCTYPE xdoclet-module PUBLIC "-//XDoclet Team//DTD XDoclet Module 1.0//EN" "http://xdoclet.sourceforge.net/dtd/xdoclet-module_1_0.dtd">
+-->
+
+<xdoclet-module>
+    <!--
+    xdoclet.modules.ibm.websphere.web.WebSphereWebXmlSubTask
+    xdoclet.modules.ibm.websphere.ejb.WebSphereSubTask
+    -->
+
+    <subtask
+        name="webspherewebxml"
+        implementation-class="xdoclet.modules.ibm.websphere.web.WebSphereWebXmlSubTask"
+        parent-task-class="xdoclet.modules.web.WebDocletTask"
+    />
+    <subtask
+        name="websphere"
+        implementation-class="xdoclet.modules.ibm.websphere.ejb.WebSphereSubTask"
+        parent-task-class="xdoclet.modules.ejb.EjbDocletTask"
+    />
+    
+    <taghandler
+    	namespace="WASEjb"
+    	class="xdoclet.modules.ibm.websphere.ejb.WasEjbTagsHandler"
+    />
+</xdoclet-module>

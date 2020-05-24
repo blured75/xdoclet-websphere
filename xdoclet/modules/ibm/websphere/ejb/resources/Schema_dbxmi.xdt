@@ -1,0 +1,25 @@
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:RDBSchema="RDBSchema.xmi">
+
+   <RDBSchema:RDBDatabase xmi:id="RDBDatabase_1" name="TopDownDB" tableGroup="RDBTable_1 RDBTable_2">
+      <dataTypeSet href="UDBV7_Primitives.xmi#SQLPrimitives_1"/>
+   </RDBSchema:RDBDatabase>
+
+  <XDtEjbEntity:forAllEntityBeans>
+   <XDtEjb:ifIsAConcreteEJBean>
+   <XDtEjbCmp:ifEntityIsCmp>
+   <RDBSchema:RDBTable xmi:id="RDBTable_<XDtId:id tagName='ejb:bean' paramNames='name'/>" name="<XDtClass:classTagValue tagName='websphere:mapping' paramName='table-name'/>" primaryKey="<XDtId:id tagName='ejb:bean' paramNames='name'/>_PRIMARYKEY" database="RDBDatabase_1">
+      <namedGroup xmi:type="RDBSchema:SQLReference" xmi:id="<XDtId:id tagName='ejb:bean' paramNames='name'/>_PRIMARYKEY" members="------RDBColumn_1" table="RDBTable_<XDtId:id tagName='ejb:bean' paramNames='name'/>" constraint="Constraint_<XDtId:id tagName='ejb:bean' paramNames='name'/>_<XDtClass:classTagValue tagName='websphere:mapping-constraint' paramName='constraint-type'/>"/>
+     <XDtClass:forAllClassTags tagName="websphere:mapping-constraint">
+      <constraints xmi:id="Constraint_<XDtId:id tagName='ejb:bean' paramNames='name'/>_<XDtClass:classTagValue tagName='websphere:mapping-constraint' paramName='constraint-type'/>" name="<XDtClass:classTagValue tagName='websphere:mapping-constraint' paramName='constraint-name'/>" type="<XDtClass:classTagValue tagName='websphere:mapping-constraint' paramName='constraint-type'/>" primaryKey="<XDtId:id tagName='ejb:bean' paramNames='name'/>_PRIMARYKEY"/>
+     </XDtClass:forAllClassTags>
+
+    <XDtEjbPersistent:forAllPersistentFields>
+      <columns xmi:id="<XDtId:id tagName='ejb:bean' paramNames='name'/>_<XDtMethod:propertyName/>" name="<XDtMethod:propertyName/>">
+      </columns>
+    </XDtEjbPersistent:forAllPersistentFields>
+
+   </RDBSchema:RDBTable>
+   </XDtEjbCmp:ifEntityIsCmp>
+   </XDtEjb:ifIsAConcreteEJBean>
+  </XDtEjbEntity:forAllEntityBeans>
+</xmi:XMI>

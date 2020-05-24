@@ -1,0 +1,139 @@
+<ejbbnd:EJBJarBinding xmi:version="2.0"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbbnd="ejbbnd.xmi"
+   xmlns:ejb="ejb.xmi" xmlns:common="common.xmi"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xmi:id="ejb-jar_ID_Bnd">
+
+   <ejbJar href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='ejb-jar' wrapInIdEquals='false'/>"/>
+
+    <XDtClass:forAllClasses type="javax.ejb.SessionBean">
+     <XDtEjb:ifIsAConcreteEJBean>
+      <ejbBindings
+         xmi:<XDtId:prefixedId prefix="Session_bnd"/>
+         jndiName="<XDtEjbHome:jndiName type='remote'/>">
+        <XDtEjbRef:forAllEjbRefs>
+         <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+            <bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBLocalRef' wrapInIdEquals='false'/>"/>
+         </ejbRefBindings>
+        </XDtEjbRef:forAllEjbRefs>
+
+        <XDtClass:forAllClassTags tagName="ejb:ejb-external-ref">
+         <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+            <bindingEjbRef href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBLocalRef' wrapInIdEquals='false'/>"/>
+         </ejbRefBindings>
+        </XDtClass:forAllClassTags>
+
+        <XDtClass:forAllClassTags tagName="ejb:resource-ref">
+        <XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="jndi-name">
+         <resRefBindings xmi:<XDtId:prefixedId prefix="ResRefBnd"/> jndiName="<XDtClass:classTagValue tagName='ejb:resource-ref' paramName='jndi-name'/>">
+           <XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="res-auth">
+            <defaultAuth xmi:type="commonbnd:BasicAuthData" xmi:<XDtId:prefixedId prefix="BasicAuthData"/>>
+               <userId xsi:nil="true"/>
+               <password xdi:nul="true"/>
+            </defaultAuth>
+           </XDtClass:ifHasClassTag>
+            <bindingResourceRef href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='ResRef' wrapInIdEquals='false'/>"/>
+         </resRefBindings>
+        </XDtClass:ifHasClassTag>
+        </XDtClass:forAllClassTags>
+
+        <XDtClass:ifHasClassTag tagName="websphere:datasource" paramName="jndi-name">
+         <datasource
+            xmi:id="<XDtId:prefixedId prefix='Datasource' wrapInIdEquals='false'/>"
+            jndiName="<XDtClass:classTagValue tagName='websphere:datasource' paramName='jndi-name'/>">
+            <defaultAuth
+               xmi:type="commonbnd:BasicAuthData"
+               xmi:id="<XDtId:prefixedId prefix='BasicAuthData' wrapInIdEquals='false'/>">
+               <userId xsi:nil="true"/>
+               <password xsi:nil="true"/>
+            </defaultAuth>
+         </datasource>
+        </XDtClass:ifHasClassTag>
+
+         <enterpriseBean
+            xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#<XDtEjb:id/>" />
+      </ejbBindings>
+
+     </XDtEjb:ifIsAConcreteEJBean>
+
+    </XDtClass:forAllClasses>
+
+	<XDtClass:forAllClasses type="javax.ejb.EntityBean">
+     <XDtEjb:ifIsAConcreteEJBean>
+      <ejbBindings
+        <XDtEjbCmp:ifEntityIsCmp>
+         xmi:<XDtId:prefixedId prefix="ContainerManagedEntity_bnd"/>
+        </XDtEjbCmp:ifEntityIsCmp>
+        <XDtEjbBmp:ifEntityIsBmp>
+         xmi:<XDtId:prefixedId prefix="BeanManagedEntity_bnd"/>
+        </XDtEjbBmp:ifEntityIsBmp>
+         jndiName="<XDtEjbHome:jndiName type='local'/>">
+<!-- the above line needs fixed: if the reference is a local one, then type needs to equal 'local' instead of 'remote' -->
+
+        <XDtEjbRef:forAllEjbRefs>
+         <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+            <bindingEjbRef xmi:type="common:EJBLocalRef" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBRef' wrapInIdEquals='false'/>"/>
+         </ejbRefBindings>
+        </XDtEjbRef:forAllEjbRefs>
+
+        <XDtClass:forAllClassTags tagName="ejb:ejb-external-ref">
+         <ejbRefBindings xmi:<XDtId:prefixedId prefix="EJBRefBnd"/> jndiName="<XDtEjbRef:ejbRefJndiName/>">
+            <bindingEjbRef href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='EJBRef' wrapInIdEquals='false'/>"/>
+         </ejbRefBindings>
+        </XDtClass:forAllClassTags>
+
+        <XDtClass:forAllClassTags tagName="ejb:resource-ref">
+        <XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="jndi-name">
+         <resRefBindings xmi:<XDtId:prefixedId prefix="ResRefBnd"/> jndiName="<XDtClass:classTagValue tagName='ejb:resource-ref' paramName='jndi-name'/>">
+           <XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="res-auth">
+            <defaultAuth xmi:type="commonbnd:BasicAuthData" xmi:<XDtId:prefixedId prefix="BasicAuthData"/>>
+               <userId xsi:nil="true"/>
+               <password xdi:nul="true"/>
+            </defaultAuth>
+           </XDtClass:ifHasClassTag>
+            <bindingResourceRef href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='ResRef' wrapInIdEquals='false'/>"/>
+         </resRefBindings>
+        </XDtClass:ifHasClassTag>
+        </XDtClass:forAllClassTags>
+
+        <XDtClass:ifHasClassTag tagName="websphere:datasource" paramName="jndi-name">
+         <datasource
+            xmi:id="<XDtId:prefixedId prefix='Datasource' wrapInIdEquals='false'/>"
+            jndiName="<XDtClass:classTagValue tagName='websphere:datasource' paramName='jndi-name'/>">
+            <defaultAuth
+               xmi:type="commonbnd:BasicAuthData"
+               xmi:id="<XDtId:prefixedId prefix='BasicAuthData' wrapInIdEquals='false'/>">
+               <userId xsi:nil="true"/>
+               <password xsi:nil="true"/>
+            </defaultAuth>
+         </datasource>
+        </XDtClass:ifHasClassTag>
+
+         <enterpriseBean
+           <XDtEjbCmp:ifEntityIsCmp>
+            xmi:type="ejb:ContainerManagedEntity" href="META-INF/ejb-jar.xml#<XDtEjb:id/>"
+           </XDtEjbCmp:ifEntityIsCmp>
+           <XDtEjbBmp:ifEntityIsBmp>
+            xmi:type="ejb:BeanManagedEntity" href="META-INF/ejb-jar.xml#<XDtEjb:id/>"
+           </XDtEjbBmp:ifEntityIsBmp> />
+      </ejbBindings>
+
+     </XDtEjb:ifIsAConcreteEJBean>
+
+    </XDtClass:forAllClasses>
+
+    <XDtConfig:ifHasConfigParam paramName="DefaultDatasource">
+     <defaultDatasource
+        xmi:id="<XDtId:prefixedId prefix='Datasource' wrapInIdEquals='false'/>"
+        jndiName="<XDtConfig:configParameterValue paramName="DefaultDatasource"/>">
+        <defaultAuth
+           xmi:type="commonbnd:BasicAuthData"
+           xmi:id="<XDtId:prefixedId prefix='BasicAuthData' wrapInIdEquals='false'/>">
+           <userId xsi:nil="true"/>
+           <password xsi:nil="true"/>
+        </defaultAuth>
+     </defaultDatasource>
+    </XDtConfig:ifHasConfigParam>
+
+</ejbbnd:EJBJarBinding>
+

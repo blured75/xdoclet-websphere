@@ -1,0 +1,53 @@
+<ejbext:EJBJarExtension xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ejbext="ejbext.xmi" xmlns:ejb="ejb.xmi" xmi:id="ejb-jar_ID_Ext">
+  <ejbJar href="META-INF/ejb-jar.xml#ejb-jar_ID"/>
+
+  <XDtEjbEntity:forAllEntityBeans>
+   <XDtEjb:ifIsAConcreteEJBean>
+    <ejbExtensions 
+		<XDtEjbCmp:ifEntityIsCmp>
+		xmi:type="ejbext:ContainerManagedEntityExtension" xmi:id="<XDtEjb:id/>">
+      <enterpriseBean xmi:type="ejb:ContainerManagedEntity" href="META-INF/ejb-jar.xml#<XDtEjb:id/>"/>
+      <structure xmi:id="<XDtEjb:id/>_BeanStructure" inheritenceRoot="false"/>
+      <beanCache xmi:id="<XDtId:prefixedId prefix='ContainerManagedEntity__BeanCache' wrapInIdEquals='false'/>" 
+      		activateAt="<XDtClass:classTagValue tagName="websphere:bean-cache" paramName="activate-at" default="ONCE"/>" 
+      		loadAt="<XDtClass:classTagValue tagName="websphere:bean-cache" paramName="load-at" default="ACTIVATION"/>"
+      		pinnedFor="<XDtClass:classTagValue tagName="websphere:bean-cache" paramName="pinned-for" default="ACTIVATION_PERIOD"/>"
+      		/>
+      <internationalization xmi:id="<XDtId:prefixedId prefix='ContainerManagedEntity_BeanInternationalization' wrapInIdEquals='false'/>" invocationLocale="CALLER"/>
+      <localTran xmi:id="<XDtId:prefixedId prefix='ContainerManagedEntity_LocalTran' wrapInIdEquals='false'/>" boundary="<XDtClass:classTagValue tagName="websphere:local-tran" paramName="boundary" default="BEAN_METHOD"/>" unresolvedAction="<XDtClass:classTagValue tagName="websphere:local-tran" paramName="unresolved-action" default="ROLLBACK"/>"/>
+      <dataCache xmi:id="<XDtId:prefixedId prefix='DataCache_' wrapInIdEquals='false'/>" lifetimeInCacheUsage="<XDtClass:classTagValue tagName="websphere:data-cache" paramName="lifetime-in-cache" default="OFF"/>"/>
+		</XDtEjbCmp:ifEntityIsCmp>
+		<XDtEjbBmp:ifEntityIsBmp>
+		xmi:type="ejbext:EntityExtension" xmi:id="<XDtId:prefixedId prefix='BeanManagedEntity_ext' wrapInIdEquals='false'/>">
+      <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='BeanManagedEntity' wrapInIdEquals='false'/>"/>
+      <structure xmi:id="<XDtEjb:id/>_BeanStructure" inheritenceRoot="false"/>
+      <beanCache xmi:id="<XDtId:prefixedId prefix='BeanManagedEntity_BeanCache' wrapInIdEquals='false'/>" activateAt="<XDtClass:classTagValue tagName="websphere:bean-cache" paramName="activate-at" default="TRANSACTION"/>" loadAt="<XDtClass:classTagValue tagName="websphere:bean-cache" paramName="load-at" default="TRANSACTION"/>"/>
+      <internationalization xmi:id="<XDtId:prefixedId prefix='BeanManagedEntity_BeanInternationalization' wrapInIdEquals='false'/>" invocationLocale="CALLER"/>
+      <localTran xmi:id="<XDtId:prefixedId prefix='BeanManagedEntity_LocalTran' wrapInIdEquals='false'/>" boundary="<XDtClass:classTagValue tagName="websphere:local-tran" paramName="boundary" default="BEAN_METHOD"/>" unresolvedAction="<XDtClass:classTagValue tagName="websphere:local-tran" paramName="unresolved-action" default="ROLLBACK"/>"/>
+		</XDtEjbBmp:ifEntityIsBmp>
+
+      <XDtClass:forAllClassTags tagName="websphere:finder-query">
+       <finderDescriptors xmi:type="ejbext:WhereClauseFinderDescriptor" xmi:id="<XDtId:prefixedId prefix='WhereClauseFinderDescriptor' wrapInIdEquals='false'/>" whereClause="<XDtClass:classTagValue tagName='websphere:finder-query' paramName='where-clause'/>">
+        <finderMethodElements xmi:id="<XDtId:prefixedId prefix='MethodElement' wrapInIdEquals='false'/>"
+                              name="<XDtClass:classTagValue tagName='websphere:finder-query' paramName='name'/>"
+                              parms="<XDtClass:classTagValue tagName='websphere:finder-query' paramName='parms'/>"
+                              type="<XDtClass:classTagValue tagName='websphere:finder-query' paramName='home' default='Home'/>">
+          <enterpriseBean xmi:type="ejb:Entity" href="META-INF/ejb-jar.xml#ContainerManagedEntity_<XDtEjb:id/>"/>
+        </finderMethodElements>
+
+       </finderDescriptors>
+      </XDtClass:forAllClassTags>
+    </ejbExtensions>
+   </XDtEjb:ifIsAConcreteEJBean>
+  </XDtEjbEntity:forAllEntityBeans>
+  
+  <XDtEjbSession:forAllSessionBeans>
+     <XDtEjb:ifIsAConcreteEJBean>
+        <XDtClass:ifHasClassTag tagName="websphere:bean" paramName="timeout">
+     <ejbExtensions xmi:type="ejbext:SessionExtension" xmi:<XDtId:prefixedId prefix="Session_ext"/> timeout="<XDtClass:classTagValue tagName='websphere:bean' paramName='timeout'/>">
+       <enterpriseBean xmi:type="ejb:Session" href="META-INF/ejb-jar.xml#<XDtId:prefixedId prefix='Session' wrapInIdEquals='false'/>" />
+     </ejbExtensions>
+	</XDtClass:ifHasClassTag>
+     </XDtEjb:ifIsAConcreteEJBean>
+  </XDtEjbSession:forAllSessionBeans>
+</ejbext:EJBJarExtension>

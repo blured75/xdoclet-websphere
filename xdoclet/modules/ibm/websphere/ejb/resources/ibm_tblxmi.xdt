@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RDBSchema:RDBTable xmi:version="2.0" 
+        xmlns:xmi="http://www.omg.org/XMI" 
+        xmlns:RDBSchema="RDBSchema.xmi" 
+		xmi:id="RDBTable_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>"
+		name="<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>" 
+		primaryKey="SQLReference_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtClass:classTagValue tagName='ejb:bean' paramName='primarykey-field'/> ">
+	<database href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>.dbxmi#RDBDatabase_<XDtConfig:configParameterValue paramName='Db'/>"/>
+	<schema href="META-INF/backends/<XDtConfig:configParameterValue paramName='Db'/>/<XDtConfig:configParameterValue paramName='Schema'/>_<XDtConfig:configParameterValue paramName='User'/>.schxmi#RDBSchema_<XDtConfig:configParameterValue paramName='Schema'/>"/>
+	<XDtEjbCmp:forAllCmpFields>
+	<XDtMethod:forAllMethodTags tagName="ejb:persistence">
+
+	<columns xmi:type="RDBSchema:RDBColumn" 
+	         name="<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>" 
+	         xmi:id="RDBColumn_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>" 
+		<XDtMethod:ifHasMethodTag tagName='ejb:pk-field'>
+		allowNull="false"
+		</XDtMethod:ifHasMethodTag>
+		<XDtMethod:ifDoesntHaveMethodTag tagName='ejb:pk-field'>
+		allowNull="true"
+		</XDtMethod:ifDoesntHaveMethodTag>
+		>
+		
+		<!-- COMMENT CAUSE FOR THE MOMENT DON'T HAVE THE SPEC OF THE DIFFERENT TYPES -->
+		<!-- SO WILL USE SQLCharacterStringType length="250"    href="JavatoDB2UDBNT_V72TypeMaps.xmi#SQLCharacterStringType_250 -->
+		<!--
+		<type xmi:type="RDBSchema:<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="ejb:persistence" paramName="jdbc-type"/>' />" 
+ 		     xmi:id="<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="ejb:persistence" paramName="jdbc-type"/>'/>_TODO"
+		     <XDtWASEjb:ifCharacterType>
+		     characterSet="800" length="<XDtWASEjb:getColumnLength/>"
+		     </XDtWASEjb:ifCharacterType>
+		     
+		     >
+			<originatingType xmi:type="RDBSchema:<XDtWASEjb:getJDBCType dbType='<XDtConfig:configParameterValue paramName="Db"/>' jdbcType='<XDtMethod:methodTagValue tagName="ejb:persistence" paramName="jdbc-type"/>' />" 
+				href="<XDtWASEjb:getShortDBName dbType='<XDtConfig:configParameterValue paramName="Db"/>'/>_Primitives.xmi#<XDtWASEjb:getSQLType dbType='<XDtConfig:configParameterValue paramName="Db"/>' sqlType='<XDtMethod:methodTagValue tagName="ejb:persistence" paramName="sql-type"/>' />"
+			/>
+		</type>
+		-->
+		
+		<type xmi:type="RDBSchema:SQLCharacterStringType"
+		      xmi:id="SQLCharacterStringType_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>"
+		      length="250"
+		      <originatingType xmi:type="RDBSchema:SQLCharacterStringType"
+		       href="JavatoDB2UDBNT_V72TypeMaps.xmi#SQLCharacterStringType_250"/>
+		</type>
+	</columns>
+	
+	</XDtMethod:forAllMethodTags>
+	</XDtEjbCmp:forAllCmpFields>
+
+	<XDtEjbCmp:forAllCmpFields>
+		<XDtMethod:forAllMethodTags tagName="ejb:pk-field">
+			<XDtComment:comment>
+		    -------------------------------------------------------
+			Treating the named group for the pk-field
+			We are assuming that there is only one pk at the moment
+			-------------------------------------------------------
+			</XDtComment:comment>
+			
+			<namedGroup xmi:type="RDBSchema:SQLReference" 
+			            xmi:id="SQLReference_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>" 
+		  		        name="PK_<XDtMethod:methodTagValue tagName="ejb:persistence" paramName="column-name"/>"
+				        members="RDBColumn_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>"
+				        constraint="SQLConstraint_<XDtClass:classTagValue tagName='ejb:persistence' paramName='table-name'/>#<XDtMethod:methodTagValue tagName='ejb:persistence' paramName='column-name'/>" />
+				
+				<!--
+				Look for all the beans referencing this PK field
+				<XDtEjbRel:forAllRelationships>
+					Search the method attribute @websphere:column-map foreign-key-column
+
+
+				</XDtEjbRel:forAllRelationships>
+				-->
+				<referenceByKey href="META-INF/backends/???/???.tblxmi#RDBReferenceByKey_<Table>#<column>"/>
+				        
+				        
+			</namedGroup>
+		
+	
+			========================================== GENERATED BY XDOCLET WASEJBTAGSHANDLER ===================================================
+
+			
+			FORALLRELATIONSHIPS			
+			<XDtWASEjb:forAllRelationships>
+				GETTABLENAMEFORRELATIONSHIP : <XDtWASEjb:getTableNameForRelationship/>
+				DUMPMETHOD : <XDtWASEjb:dumpMethod/>
+				GETRELATEDTABLE : <XDtWASEjb:getRelatedTable/>
+				GETRELATIONSHIPKEYCOLUMN : <XDtWASEjb:getRelationshipKeyColumns/>
+				<XDtWASEjb:getRelationHolder/>
+			</XDtWASEjb:forAllRelationships>
+			
+			
+		
+		</XDtMethod:forAllMethodTags>
+		
+	</XDtEjbCmp:forAllCmpFields>
+</RDBSchema:RDBTable>

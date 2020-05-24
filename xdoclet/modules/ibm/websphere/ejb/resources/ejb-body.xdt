@@ -1,0 +1,250 @@
+
+	<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="description">
+		<description><![CDATA[<XDtClass:classTagValue tagName="ejb:bean" paramName="description"/>]]></description>
+	</XDtClass:ifHasClassTag>
+	<XDtClass:ifDoesntHaveClassTag tagName="ejb:bean" paramName="description">
+		<description><![CDATA[<XDtClass:firstSentenceDescription/>]]></description>
+	</XDtClass:ifDoesntHaveClassTag>
+	<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="display-name">
+		<display-name><XDtClass:classTagValue tagName="ejb:bean" paramName="display-name"/></display-name>
+	</XDtClass:ifHasClassTag>
+	<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="small-icon">
+		<small-icon><XDtClass:classTagValue tagName="ejb:bean" paramName="small-icon"/></small-icon>
+	</XDtClass:ifHasClassTag>
+	<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="large-icon">
+		<large-icon><XDtClass:classTagValue tagName="ejb:bean" paramName="large-icon"/></large-icon>
+	</XDtClass:ifHasClassTag>
+
+    <ejb-name><XDtEjb:ejbName/></ejb-name>
+
+	<XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+    	<XDtType:ifIsOfType type="javax.ejb.EntityBean">
+      		<XDtEjb:ifRemoteEjb>
+         		<home><XDtEjbHome:homeInterface type="remote"/></home>
+         		<remote><XDtEjbIntf:componentInterface type="remote"/></remote>
+      		</XDtEjb:ifRemoteEjb>
+      		<XDtEjb:ifLocalEjb>
+       			<local-home><XDtEjbHome:homeInterface type="local"/></local-home>
+         		<local><XDtEjbIntf:componentInterface type="local"/></local>
+      		</XDtEjb:ifLocalEjb>
+    	</XDtType:ifIsOfType>
+
+    	<XDtType:ifIsOfType type="javax.ejb.SessionBean">
+      		<XDtEjb:ifRemoteEjb>
+         		<home><XDtEjbHome:homeInterface type="remote"/></home>
+         		<remote><XDtEjbIntf:componentInterface type="remote"/></remote>
+      		</XDtEjb:ifRemoteEjb>
+      		<XDtEjb:ifLocalEjb>
+         		<local-home><XDtEjbHome:homeInterface type="local"/></local-home>
+         		<local><XDtEjbIntf:componentInterface type="local"/></local>
+      		</XDtEjb:ifLocalEjb>
+    	</XDtType:ifIsOfType>
+  	</XDtConfig:ifConfigParamGreaterOrEquals>
+  
+ 	<XDtConfig:ifConfigParamNotGreaterOrEquals paramName="EjbSpec" value="2.0">
+    	<home><XDtEjbHome:homeInterface type="remote"/></home>
+        <remote><XDtEjbIntf:componentInterface type="remote"/></remote>
+  	</XDtConfig:ifConfigParamNotGreaterOrEquals>
+  
+    <ejb-class><XDtEjb:concreteFullClassName/></ejb-class>
+    	<XDtType:ifIsOfType type="javax.ejb.SessionBean">
+        	<session-type><XDtClass:classTagValue tagName="ejb:bean" paramName="type" values="Stateful,Stateless" default="Stateless"/></session-type>
+         	<transaction-type><XDtClass:classTagValue tagName="ejb:bean" paramName="transaction-type" values="Container,Bean" default="Container"/></transaction-type>
+     	</XDtType:ifIsOfType>
+     	<XDtType:ifIsOfType type="javax.ejb.EntityBean">
+       		<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="type">
+        		<XDtEjbCmp:ifEntityIsCmp>
+        	 		<persistence-type>Container</persistence-type>
+        		</XDtEjbCmp:ifEntityIsCmp>
+        		<XDtEjbBmp:ifEntityIsBmp>
+         			<persistence-type>Bean</persistence-type>
+        		</XDtEjbBmp:ifEntityIsBmp>
+       		</XDtClass:ifHasClassTag>
+       		<XDtClass:ifDoesntHaveClassTag tagName="ejb:bean" paramName="type">
+         		<persistence-type>Container</persistence-type>
+       		</XDtClass:ifDoesntHaveClassTag>
+         	<prim-key-class><XDtEjbPk:pkClass/></prim-key-class>
+         	<reentrant><XDtEjbEntity:reentrant/></reentrant>
+      		<XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+       			<XDtEjbCmp:ifEntityIsCmp>
+         			<cmp-version><XDtClass:classTagValue tagName="ejb:bean" paramName="cmp-version" values="1.x,2.x" default="2.x" /></cmp-version>
+         			<abstract-schema-name><XDtClass:classTagValue tagName="ejb:bean" paramName="schema" default="<XDtEjb:ejbName/>"/></abstract-schema-name>
+        			<XDtEjbBmp:ifUseSoftLocking>
+         				<cmp-field id="CMPAttribute_<XDtClass:classTagValue tagName="ejb:bean" paramName="name"/>#<XDtMethod:propertyName/>">
+	       				<!-- <cmp-field id="<XDtId:prefixedId prefix='CMPAttribute' wrapInIdEquals='false'/>"> -->
+            				<description><![CDATA[Version number for soft locking]]></description>
+           					<field-name>version</field-name>
+         				</cmp-field>
+			        </XDtEjbBmp:ifUseSoftLocking>
+       			</XDtEjbCmp:ifEntityIsCmp>
+      		</XDtConfig:ifConfigParamGreaterOrEquals>
+        	<XDtEjbCmp:forAllCmpFields>
+         		<cmp-field id="CMPAttribute_<XDtClass:classTagValue tagName="ejb:bean" paramName="name"/>#<XDtMethod:propertyName/>">
+   				<!-- <cmp-field id="<XDtId:prefixedId prefix='CMPAttribute' wrapInIdEquals='false'/>"> -->
+            		<description><![CDATA[<XDtMethod:firstSentenceDescriptionOfCurrentMethod/>]]></description>
+            		<field-name><XDtMethod:propertyName/></field-name>
+         		</cmp-field>
+        	</XDtEjbCmp:forAllCmpFields>
+        	<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="primkey-field" superclasses="true">
+         		<primkey-field><XDtClass:classTagValue tagName="ejb:bean" paramName="primkey-field" /></primkey-field>
+        	</XDtClass:ifHasClassTag>
+     	</XDtType:ifIsOfType>
+
+     	<XDtType:ifIsOfType type="javax.ejb.MessageDrivenBean">
+       		<XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+         		<transaction-type><XDtClass:classTagValue tagName="ejb:bean" paramName="transaction-type" values="Container,Bean" default="Container"/></transaction-type>
+        		<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="message-selector">
+         			<message-selector><XDtClass:classTagValue tagName="ejb:bean" paramName="message-selector"/></message-selector>
+        		</XDtClass:ifHasClassTag>
+        		<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="acknowledge-mode">
+         			<acknowledge-mode><XDtClass:classTagValue tagName="ejb:bean" paramName="acknowledge-mode" values="Auto-acknowledge,Dups-ok-acknowledge" default="Auto-acknowledge"/></acknowledge-mode>
+        		</XDtClass:ifHasClassTag>
+        		<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="destination-type">
+         			<message-driven-destination>
+            			<destination-type><XDtClass:classTagValue tagName="ejb:bean" paramName="destination-type" values="javax.jms.Queue,javax.jms.Topic"/></destination-type>
+           				<XDtClass:ifHasClassTag tagName="ejb:bean" paramName="subscription-durability">
+            				<subscription-durability><XDtClass:classTagValue tagName="ejb:bean" paramName="subscription-durability" values="Durable,NonDurable"/></subscription-durability>
+           				</XDtClass:ifHasClassTag>
+         			</message-driven-destination>
+        		</XDtClass:ifHasClassTag>
+       		</XDtConfig:ifConfigParamGreaterOrEquals>
+     	</XDtType:ifIsOfType>
+
+		<XDtMerge:merge file="ejb-env-entries-{0}.xml">
+	        <XDtClass:forAllClassTags tagName="ejb:env-entry">	        
+    	    	<env-entry>
+        	   		<XDtClass:ifHasClassTag tagName="ejb:env-entry" paramName="description">
+	            		<description><![CDATA[<XDtClass:classTagValue tagName="ejb:env-entry" paramName="description"/>]]></description>
+	           		</XDtClass:ifHasClassTag>
+	            	<env-entry-name><XDtClass:classTagValue tagName="ejb:env-entry" paramName="name"/></env-entry-name>
+	           		<XDtClass:ifHasClassTag tagName="ejb:env-entry" paramName="type">
+	            		<env-entry-type><XDtClass:classTagValue tagName="ejb:env-entry" paramName="type" values="java.lang.Boolean,java.lang.String,java.lang.Character,java.lang.Integer,java.lang.Double,java.lang.Byte,java.lang.Short,java.lang.Long,java.lang.Float"/></env-entry-type>
+	           		</XDtClass:ifHasClassTag>
+	           		<XDtClass:ifDoesntHaveClassTag tagName="ejb:env-entry" paramName="type">
+	            		<env-entry-type>java.lang.String</env-entry-type>
+	           		</XDtClass:ifDoesntHaveClassTag>
+	           		<XDtClass:ifHasClassTag tagName="ejb:env-entry" paramName="value">
+	            		<env-entry-value><XDtClass:classTagValue tagName="ejb:env-entry" paramName="value"/></env-entry-value>
+	           		</XDtClass:ifHasClassTag>
+	         	</env-entry>
+	        </XDtClass:forAllClassTags>
+	        	        
+		</XDtMerge:merge>
+
+		<XDtMerge:merge file="ejb-ejbrefs-{0}.xml">
+     		<XDtMerge:merge file="xdoclet/modules/ejb/dd/resources/ejb-ref.xdt">
+     		</XDtMerge:merge>
+  		</XDtMerge:merge>
+
+       	<XDtMerge:merge file="ejb-sec-rolerefs-{0}.xml">
+       		<XDtClass:forAllClassTags tagName="ejb:security-role-ref">
+         		<security-role-ref>
+         		   	<role-name><XDtClass:classTagValue tagName="ejb:security-role-ref" paramName="role-name"/></role-name>
+            		<role-link><XDtClass:classTagValue tagName="ejb:security-role-ref" paramName="role-link"/></role-link>
+         		</security-role-ref>
+        	</XDtClass:forAllClassTags>
+       	</XDtMerge:merge>
+
+		<XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+			<XDtClass:forAllClassTags tagName="ejb:security-identity">
+         		<security-identity>
+           			<XDtClass:ifHasClassTag tagName="ejb:security-identity" paramName="description">
+            			<description><![CDATA[<XDtClass:classTagValue tagName="ejb:security-identity" paramName="description"/>]]></description>
+           			</XDtClass:ifHasClassTag>
+           			<XDtClass:ifHasClassTag tagName="ejb:security-identity" paramName="use-caller-identity">
+            			<use-caller-identity <XDtId:prefixedId prefix="UseCallerIdentity"/>/>
+           			</XDtClass:ifHasClassTag>
+           			<XDtClass:ifHasClassTag tagName="ejb:security-identity" paramName="run-as">
+            			<run-as>
+              				<XDtClass:ifHasClassTag tagName="ejb:security-identity" paramName="description">
+               					<description><![CDATA[<XDtClass:classTagValue tagName="ejb:security-identity" paramName="description"/>]]></description>
+              				</XDtClass:ifHasClassTag>
+               				<role-name><XDtClass:classTagValue tagName="ejb:security-identity" paramName="run-as"/></role-name>
+            			</run-as>
+           			</XDtClass:ifHasClassTag>
+         		</security-identity>
+        	</XDtClass:forAllClassTags>
+       	</XDtConfig:ifConfigParamGreaterOrEquals>
+
+       	<XDtMerge:merge file="ejb-resourcerefs-{0}.xml">
+        	<XDtClass:forAllClassTags tagName="ejb:resource-ref">
+         		<resource-ref <XDtId:prefixedId prefix="ResRef"/>>
+           			<XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="res-name">
+			            <res-ref-name><XDtClass:classTagValue tagName="ejb:resource-ref" paramName="res-name"/></res-ref-name>
+           			</XDtClass:ifHasClassTag>
+           			<XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="res-ref-name">
+            			<res-ref-name><XDtClass:classTagValue tagName="ejb:resource-ref" paramName="res-ref-name"/></res-ref-name>
+           			</XDtClass:ifHasClassTag>
+            		<res-type><XDtClass:classTagValue tagName="ejb:resource-ref" paramName="res-type"/></res-type>
+            		<res-auth><XDtClass:classTagValue tagName="ejb:resource-ref" paramName="res-auth"/></res-auth>
+           			<XDtClass:ifHasClassTag tagName="ejb:resource-ref" paramName="res-sharing-scope">
+            			<res-sharing-scope><XDtClass:classTagValue tagName="ejb:resource-ref" paramName="res-sharing-scope" values="Shareable,Unshareable"/></res-sharing-scope>
+           			</XDtClass:ifHasClassTag>
+         		</resource-ref>
+        	</XDtClass:forAllClassTags>
+       	</XDtMerge:merge>
+
+		<XDtMerge:merge file="ejb-resource-env-refs-{0}.xml">
+        	<XDtClass:forAllClassTags tagName="ejb:resource-env-ref">
+         		<resource-env-ref>
+         		  	<XDtClass:ifHasClassTag tagName="ejb:resource-env-ref" paramName="description">
+            			<description><![CDATA[<XDtClass:classTagValue tagName="ejb:resource-env-ref" paramName="description"/>]]></description>
+           			</XDtClass:ifHasClassTag>
+            		<resource-env-ref-name><XDtClass:classTagValue tagName="ejb:resource-env-ref" paramName="name"/></resource-env-ref-name>
+            		<resource-env-ref-type><XDtClass:classTagValue tagName="ejb:resource-env-ref" paramName="type"/></resource-env-ref-type>
+         		</resource-env-ref>
+        	</XDtClass:forAllClassTags>
+       	</XDtMerge:merge>
+
+		<XDtConfig:ifConfigParamGreaterOrEquals paramName="EjbSpec" value="2.0">
+   			<XDtType:ifIsOfType type="javax.ejb.EntityBean">
+	     		<XDtEjbCmp:ifEntityIsCmp>
+	      			<XDtClass:forAllClassTags tagName="ejb:finder">
+	       				<XDtClass:ifHasClassTag tagName="ejb:finder" paramName="query">
+	         				<query>
+	           					<XDtClass:ifHasClassTag tagName="ejb:finder" paramName="description">
+	            					<description><![CDATA[<XDtClass:classTagValue tagName="ejb:finder" paramName="description"/>]]></description>
+	           					</XDtClass:ifHasClassTag>
+	            				<query-method>
+	               					<method-name><XDtClass:classTagValue tagName="ejb:finder" paramName="signature" delimiter=" (" tokenNumber="1"/></method-name>
+	               					<method-params>
+	                 				<XDtParameter:forAllParameterTypes paramName="signature">
+	                  					<method-param><XDtParameter:currentToken/></method-param>
+	                 				</XDtParameter:forAllParameterTypes>
+	               						</method-params>
+	            				</query-method>
+	           					<XDtClass:ifHasClassTag tagName="ejb:finder" paramName="result-type-mapping">
+	            					<result-type-mapping><XDtClass:classTagValue tagName="ejb:finder" paramName="result-type-mapping" values ="Local,Remote"/></result-type-mapping>
+		           				</XDtClass:ifHasClassTag>
+		           				<XDtClass:ifHasClassTag tagName="ejb:finder" paramName="query">
+		           					<ejb-ql><![CDATA[<XDtClass:classTagValue tagName="ejb:finder" paramName="query"/>]]></ejb-ql>
+		        	   			</XDtClass:ifHasClassTag>
+			           			<XDtClass:ifDoesntHaveClassTag tagName="ejb:finder" paramName="query">
+		    	        			<ejb-ql/>
+			           			</XDtClass:ifDoesntHaveClassTag>
+	         				</query>
+	       				</XDtClass:ifHasClassTag>
+	      			</XDtClass:forAllClassTags>
+	      			<XDtEjbEntity:forAllEjbSelectMethods>
+	         			<query>
+	            			<description><![CDATA[<XDtMethod:methodComment no-comment-signs="true"/>]]></description>            		
+	            			<query-method>
+								<method-name><XDtMethod:methodName/></method-name>
+	            	   			<method-params>
+		        	        	<XDtParameter:forAllMethodParams>
+	           		       			<method-param><XDtParameter:methodParamType/></method-param>
+	           		      		</XDtParameter:forAllMethodParams>
+	            	   				</method-params>
+	            			</query-method>
+	           				<XDtMethod:ifHasMethodTag tagName="ejb:select" paramName ="result-type-mapping">
+	            				<result-type-mapping><XDtMethod:methodTagValue tagName ="ejb:select" paramName="result-type-mapping" values ="Local,Remote"/></result-type-mapping>
+	           				</XDtMethod:ifHasMethodTag>
+	            			<ejb-ql><![CDATA[<XDtMethod:methodTagValue tagName="ejb:select" paramName="query"/>]]></ejb-ql>
+	         			</query>
+	      			</XDtEjbEntity:forAllEjbSelectMethods>
+		  			<XDtMerge:merge file="ejb-finders-{0}.xml">
+						<!-- Write a file named ejb-finders-<XDtClass:className/>.xml if you want to define extra finders. -->
+					</XDtMerge:merge>
+	     		</XDtEjbCmp:ifEntityIsCmp>
+	   		</XDtType:ifIsOfType>
+		</XDtConfig:ifConfigParamGreaterOrEquals>
